@@ -21,6 +21,22 @@ Tested on:
 | MacOS          | 3.24.0         | 11.3             | 6.1.0+          |
 | CentOS 7/RHEL7 | 3.7.17         | 11.3             | 6.1.0+          |
 
+## Install GoLang on CentOS7
+```
+sudo rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO
+curl -s https://mirror.go-repo.io/centos/go-repo.repo | sudo tee /etc/yum.repos.d/go-repo.repo
+yum install golang
+```
+
+## Usage without compilation
+Do steps from section "Prerequisites"
+And then:
+```
+git clone https://github.com/wbh1/grafana-sqlite-to-postgres.git
+cd grafana-sqlite-to-postgres/cmd/grafana-migrate
+go run main.go grafana.db "postgres://unix:/var/run/postgresql:5432/grafana?user=grafana"
+```
+
 ## Usage
 ```
 usage: Grafana SQLite to Postgres Migrator [<flags>] <sqlite-file> <postgres-connection-string>
